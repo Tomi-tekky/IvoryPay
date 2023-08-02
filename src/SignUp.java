@@ -9,7 +9,7 @@ public class SignUp extends MainClass {
     @Test(priority = 1)
     void UserSignUp() throws InterruptedException {
 
-        System.out.println("Kindly input click sign up");
+        System.out.println("Kindly click sign up");
         driver.findElement(By.xpath("(//a[@class='cursor-pointer text-[#02084B]'])[2]")).click();
         Thread.sleep(Long.parseLong("3000"));
 
@@ -26,7 +26,7 @@ public class SignUp extends MainClass {
         //Enter EmailAddress
         System.out.println("Kindly input your Email Address");
         WebElement Email = driver.findElement(By.id("register_email"));
-        Email.sendKeys("IvoryBank@mailinator.com");
+        Email.sendKeys("IvoryBank@mailinator.co");
 
         //Enter BusinessName
         System.out.println("Kindly input your Business name");
@@ -36,15 +36,14 @@ public class SignUp extends MainClass {
         //Enter Country
         System.out.println("Kindly input your Country");
         driver.findElement(By.xpath("(//input[@id='rc_select_0'])[1]")).click();
-        driver.findElements(By.xpath("//div[@class='rc-virtual-list-holder-inner']"));
         Thread.sleep(Long.parseLong("2000"));
 
         List<WebElement> ddrop = driver.findElements(By.xpath("//div[@class='ant-select-item-option-content']"));
-        for (WebElement element : ddrop) {
-            String attrib = element.getAttribute("innerHTML");
+        for (WebElement country : ddrop) {
+            String attrib = country.getAttribute("innerHTML");
            // System.out.println("values from dropdown...." + ddrop);
             if(attrib.contentEquals("Nigeria")){
-                element.click();
+                country.click();
                 break;
             }
         }
@@ -52,7 +51,7 @@ public class SignUp extends MainClass {
         //Enter PhoneNumber
         System.out.println("Kindly input your Phone number");
         WebElement Phone = driver.findElement(By.xpath("//input[@class='ant-input']"));
-        Phone.sendKeys("08067430927");
+        Phone.sendKeys("08067430920");
 
         //Enter Password
         System.out.println("Kindly input your Password");
@@ -69,7 +68,7 @@ public class SignUp extends MainClass {
         List<WebElement> BusinessType = driver.findElements(By.xpath("(//input[@value='starter'])[1]"));
         //System.out.println(BusinessType.size());
         for (WebElement biz : BusinessType) {
-            System.out.println(biz.getAttribute("value"));
+            //System.out.println(biz.getAttribute("value"));
             if (biz.getAttribute("value").equals("starter")) {
                 biz.click();
             }
